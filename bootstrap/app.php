@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Middleware\LanguageMiddleware;
-use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -26,7 +25,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(VerifyCsrfToken::class);
         $middleware->append(\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class); // QUAN TRỌNG
         $middleware->append(LanguageMiddleware::class);
-    })
+        // $middleware->append(Authenticate::class);
+    })  
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

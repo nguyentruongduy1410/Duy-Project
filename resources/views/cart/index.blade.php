@@ -71,4 +71,5 @@
         fetch(`/cart/update/${id}?change=${change}`)
             .then(response => location.reload()); 
     }
+    window.isAuthenticated = {!! Auth::check() ? 'true' : 'false' !!};
 </script>

@@ -1,0 +1,294 @@
+/* Fashion Nova Account Page Styles */
+
+/* Reset and Base Styles */
+
+/* body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2b282a;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+} */
+/* Account Page Styles */
+.account-page {
+    padding:40px 10%;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.account-container {
+    display: flex;
+    gap: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Account Sidebar */
+.account-sidebar {
+    flex: 0 0 280px;
+    border-right: 1px solid #eee;
+    padding: 20px 0;
+}
+
+.account-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.account-avatar {
+    font-size: 2.5rem;
+    color: #ccc;
+}
+
+.welcome-msg {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.account-email {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.account-nav {
+    padding-top: 20px;
+}
+
+.account-nav-item {
+    display: block;
+    padding: 12px 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.account-nav-item:hover,
+.account-nav-item.active {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+/* Account Content Sections */
+.account-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.account-section {
+    display: none;
+}
+
+.account-section.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 1.375rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Orders Section */
+.orders-empty,
+.wishlist-empty {
+    text-align: center;
+    padding: 60px 0;
+}
+.box-my-order{
+    width: 100%;
+    height: auto;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+.box-my-order img{
+    width: 100px;
+
+}
+.box-my-order .name-order{
+    max-width: 300px;
+    height: auto;
+    word-wrap: break-word;
+
+}
+.price-order{
+    display: flex;
+    justify-content: center;
+}
+.product-order{
+    margin-bottom: 20px;
+}
+
+.right-box-order{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.orders-empty i,
+.wishlist-empty i {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.orders-empty p,
+.wishlist-empty p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Nova Button */
+.nova-button {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nova-button:hover {
+    background-color: #222;
+}
+
+/* Addresses Section */
+.addresses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.address-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 20px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s;
+}
+
+.address-card:hover {
+    border-color: #ccc;
+}
+
+.add-icon {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+/* Profile Section */
+.account-form {
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #999;
+}
+
+/* Custom Checkbox */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+    position: relative;
+    padding-left: 30px;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.checkbox-label:hover input ~ .checkbox-custom {
+    border-color: #999;
+}
+
+.checkbox-label input:checked ~ .checkbox-custom:after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-size: 0.75rem;
+}
+/* Media Queries */
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .account-container {
+        flex-direction: column;
+    }
+
+    .account-sidebar {
+        flex: auto;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+@media (max-width: 576px) {
+    .account-content {
+        padding: 20px 15px;
+    }
+}

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('') }}css/allproduct.css">
     <link rel="stylesheet" href="{{ asset('') }}css/checkout.css">
     <link rel="stylesheet" href="{{ asset('') }}css/grid.css">
+    <link rel="stylesheet" href="{{ asset('') }}css/customer.css">
+
 
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -30,8 +32,7 @@
     <div id="container">
         <header>
             <div class="header-left">
-                <a href="/"><img src="{{ asset('') }}img/logo.png" alt="" width="200px"
-                        style="margin-right: 20px;"></a>
+                <a href="/"><img src="{{ asset('') }}img/logo.png" alt="" width="200px" style="margin-right: 20px;"></a>
                 <ul>
                     <li><a href="#">{{ __('messages.introduction') }}</a></li>
                     <li><a href="/allproduct">{{ __('messages.products') }}</a></li>
@@ -42,11 +43,13 @@
             <div class="header-right">
                 <ul class="header-right-top">
                     <li class="find">
-                        <form action="{{ route('search') }}" method="GET" style="height: 100%;" >
-                            <input type="text" id="search-input" name="keyword" placeholder="{{ __('messages.search_placeholder') }}" style="    border: 0; text-align:left;">
+                        <form action="{{ route('search') }}" method="GET" style="height: 100%;">
+                            <input type="text" id="search-input" name="keyword"
+                                placeholder="{{ __('messages.search_placeholder') }}"
+                                style="    border: 0; text-align:left;">
                         </form>
                         <i class='bx bx-search-alt-2'></i>
-                        <div class="hide-find"  id="suggestions-box">
+                        <div class="hide-find" id="suggestions-box">
 
                         </div>
                     </li>
@@ -64,8 +67,8 @@
                         </a>
                         <div class="hide-user">
                             <div class="hide-user-login">
-                                <a class="" href="">{{ __('messages.login') }}</a>
-                                <a class="black-login" href="">{{ __('messages.register') }}</a>
+                                <a class="loginEven" href="#">{{ __('messages.login') }}</a>
+                                <a  class="black-login registerEven" href="#">{{ __('messages.register') }}</a>
                             </div>
                             <div class="hide-user-manage">
                                 <ul class="hide-user-manage-hover">
@@ -89,12 +92,13 @@
                                             <i class='bx bx-gift'></i>
                                             <p>{{ __('messages.gift_cards') }}</p>
                                         </a></li>
-                                        <li class="log-out-user" style="display: none";>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                                @csrf
-                                                <button type="submit" style="border: none; padding: 5px 10px; cursor: pointer;">{{ __('messages.logout') }}</button>
-                                            </form>
-                                        </li>
+                                    <li class="log-out-user" style="display: none" ;>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                style="border: none; padding: 5px 10px; cursor: pointer;">{{ __('messages.logout') }}</button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -197,11 +201,11 @@
         @include('user.forgot_password')
 
 
-        
-        
-        
-        
-        
+
+
+
+
+
     </div>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/allproduct.js') }}" defer></script>
@@ -209,8 +213,12 @@
 
     <script src="{{ asset('') }}js/productdetail.js"></script>
     <script src="{{ asset('') }}js/checkout.js"></script>
+    <script src="{{ asset('') }}js/customer.js"></script>
+    <script>
+        
+    </script>
 
-    
+
 </body>
 
 </html>

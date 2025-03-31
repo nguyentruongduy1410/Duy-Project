@@ -131,10 +131,11 @@ class PaymentController extends Controller
 
         if ($secureHash == $vnp_SecureHash) {
             if ($_GET['vnp_ResponseCode'] == '00') {
-                $order = $_GET['vnp_TxnRef'];
-                $order = Order::find($order->id);
+                $orderId = $_GET['vnp_TxnRef'];
+                $order = Order::find($orderId);
                 $order->payment_status = 'done';
-                return view('payment.success');
+                $order->save();
+                return view(view: 'payment.success');
             } else {
                 return view('payment.fail');
             }

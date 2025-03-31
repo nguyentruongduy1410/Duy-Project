@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
@@ -36,6 +37,7 @@ class CartController extends Controller
     }
     public function checkout()
     {
+        $currentUser = Auth::user();
         $cart = Session::get('cart', []);
         $productIds = array_column($cart, 'id');
         $products = product::whereIn('id', $productIds)->get();
@@ -50,7 +52,7 @@ class CartController extends Controller
     } 
     $total_price = $products->sum(fn($product) => $product->price * $product->quantity);
 
-    return view('cart.checkout',compact('products', 'total_price'));
+    return view('cart.checkout',compact('products', 'total_price','currentUser'));
     // return view('cart.checkout',compact('products', 'total_price'));
 
     }

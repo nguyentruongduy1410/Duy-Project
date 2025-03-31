@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('hide-right-login').style.display = 'none';
         document.getElementById('hide-right-signup').style.display = 'none';
         document.getElementById('hide-right-forgot-password').style.display = 'none';
+
         let selectedForm = document.getElementById(formId);
         if (selectedForm) {
             selectedForm.style.display = 'block';
@@ -70,19 +71,48 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('hidden').style.display = 'block';
         document.getElementById('hidden').style.top = '0';
         hidden.style.zIndex = 1000;
+        body.style.overflowY = 'hidden';
 
     }
+
     //đăng ký đăng nhập
     //hiển thị đăng nhập
     document.querySelector('#checkout-form')?.addEventListener('click', e => {
+       e.preventDefault();
+        if (!window.isAuthenticated) {
+            toggleModal('hide-right-login');
+        } else {
+            this.location.href = '/checkout'
+        }
+        
+    });
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('showLogin')) {
+        console.log("showLogin found, mở modal...");
         let token = localStorage.getItem('token');
         if (!token) {
-            e.preventDefault();
             toggleModal('hide-right-login');
+            console.log('ok');
+
         }
-    });
+    }
+    // function showLoginPage(event, action) {
+    //     event.preventDefault();
+    //     if (action === 'login') {
+    //         toggleModal('hide-right-login');
+    //     } else if (action === 'register') {
+    //         toggleModal('hide-right-signup');
+    //     }
+    // }
 
-
+    document.querySelector('.loginEven')?.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleModal('hide-right-login');
+    })
+    document.querySelector('.registerEven')?.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleModal('hide-right-signup');
+    })
 
     document.querySelector('.user')?.addEventListener("click", (e) => {
         e.preventDefault();
@@ -151,23 +181,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.error) {
                     alert("Lỗi: " + data.error);
                 } else {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('user', JSON.stringify(data.user));
                     alert("Đăng nhập thành công!");
-                    document.querySelector('.log-out-user').style.display = 'block';
                     window.location.reload();
                 }
-                // if(data.token){
-                //     console.log("Response từ server:", data);
-                //     localStorage.setItem('token', data.token);
-                //     localStorage.setItem('user', JSON.stringify(data.user));
-                //     alert("Đăng nhập thành công!");
-                //     window.location.reload(); // Reload trang để cập nhật trạng thái đăng nhập
-
-                // }else{
-                //     console.error("Lỗi: Không nhận được thông tin người dùng từ server.");
-                //     alert("Đăng nhập thất bại. Kiểm tra lại thông tin.");
-                // }
             })
             .catch(error => console.error("lỗi khi gửi yêu cầu đăng nhập:", error));
     })
@@ -175,50 +191,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //kiểm tra đăng nhập
 document.addEventListener("DOMContentLoaded", function () {
-    let token = localStorage.getItem('token');
-    if (token) {
-        fetch('/check-login', {
-            method: 'GET',
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.user) {
-                    document.querySelector('.log-out-user').style.display = 'block';
-                    document.querySelector('.hide-user-login').innerText = `Chào, ${data.user.name}`;
-                    let loginButton = document.querySelector('.user');
-                    let registerButton = document.querySelector('.register');
-                    if (registerButton) registerButton.replaceWith(registerButton.cloneNode(true));
-                    if (loginButton) {
-                        loginButton.replaceWith(loginButton.cloneNode(true));
-                        loginButton = document.querySelector('.user');
-                        loginButton.addEventListener("click", function (e) {
-                            e.preventDefault();
-                            window.location.href = "/user";
-                        });
-                    }
-                }   
-            })
-            .catch(() => localStorage.removeItem('token'));
-    }
+    fetch('/check-login', {
+        method: 'GET',
+        headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.user) {
+                let loginButton = document.querySelector('.user');
+                let registerButton = document.querySelector('.register');
 
+                document.querySelector('.log-out-user').style.display = 'block';
+                document.querySelector('.hide-user-login').innerText = `Chào, ${data.user.name}`;
+
+
+                if (registerButton) registerButton.replaceWith(registerButton.cloneNode(true));
+                if (loginButton) {
+                    loginButton.replaceWith(loginButton.cloneNode(true));
+                    loginButton = document.querySelector('.user');
+                    loginButton.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        window.location.href = "/customer";
+                    });
+                }
+            }
+        })
+        .catch(() => localStorage.removeItem('token'));
 });
 
 //đăng xuất
 document.getElementById('logout-form').addEventListener("click", function (e) {
     fetch('/logout', {
         method: 'POST',
-        credentials: 'include',
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
         }
     })
         .then(() => {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
+            localStorage.clear();
+            // window.location.href = '/login';
+            window.location.href = '/';
 
-            window.location.href = '/login';
         });
 });
 
@@ -320,3 +336,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+

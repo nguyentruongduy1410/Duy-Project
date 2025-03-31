@@ -11,7 +11,11 @@ class Order extends Model
     protected $fillable = ['user_id', 'payment_method', 'payment_status', 'status', 'note'];
     public function details()
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->hasMany(OrderDetail::class, 'order_id');
     }
+    // public function products()
+    // {
+    //     return $this->belongsToMany(Product::class,  'order_id', 'product_id');
+    // }
     
 }
