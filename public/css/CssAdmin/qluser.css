@@ -1,0 +1,121 @@
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.filter input[type="text"], .filter select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 48%;
+}
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.user-table th {
+    background-color: #f2f2f2;
+}
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btn.edit {
+    background-color: #ffa500;
+}
+.btn.delete {
+    background-color: #f44336;
+}
+.btn.add {
+    margin-bottom: 20px;
+}
+.modal {
+    display: none; /* Ẩn modal mặc định */
+    position: fixed; /* Cố định vị trí */
+    z-index: 1; /* Đảm bảo modal luôn hiển thị trên cùng */
+    left: 0;
+    top: 0;
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    height: 100%; /* Chiếm toàn bộ chiều cao */
+    overflow: auto; /* Bật cuộn nếu cần */
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền tối */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Căn giữa modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Đặt chiều rộng modal nhỏ hơn */
+    max-width: 400px; /* Giới hạn chiều rộng tối đa */
+    border-radius: 10px;
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng tổng */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button styling */
+.btn.add {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.btn.add:hover {
+    background-color: #218838;
+}
