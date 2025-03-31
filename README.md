@@ -48,28 +48,27 @@ Cách cài đặt
 
 Clone repository:
 
-git clone https://github.com/yourusername/duy-project.git
-cd duy-project
+<p><code style="color: green;">git clone https://github.com/yourusername/duy-project.git</code></p>
+<p><code style="color: blue;">cd duy-project</code></p>
 
 Cài đặt dependencies:
 
-composer install
-npm install
+<p><code style="color: green;"composer install</code></p>
 
 Cấu hình môi trường:
 
-cp .env.example .env
-php artisan key:generate
+<p><code style="color: green;">cp .env.example .env</code></p>
+<p><code style="color: blue;">php artisan key:generate</code></p>
 
 Sau đó chỉnh sửa .env để kết nối với cơ sở dữ liệu của bạn.
 
 Chạy migration và seeding dữ liệu:
 
-php artisan migrate --seed
+<p><code style="color: green;">php artisan migrate --seed</code></p>
+
 
 Khởi động server:
-
-php artisan serve
+<p><code style="color: blue;">php artisan serve</code></p>
 
 📜 API Documentation
 
