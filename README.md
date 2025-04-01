@@ -1,12 +1,12 @@
 Tiến độ: 60%
 Bao gồm chức năng: 
-- Đăng nhập, đăng ký: check mail
+- Đăng nhập, đăng ký: check mail, quên mật khẩu
 - Thay đổi ngôn ngữ
 - Tìm kiếm: gợi ý sản phẩm
 - Xem chi tiết sản phẩm
 - Phân trang
 - lọc theo danh mục
-- user: thay đổi thông tin, xem đơn hàng
+- user: thay đổi thông tin, xem đơn hàng, đổi mật khẩu
 - giỏ hàng
 - thanh toán: online
 - admin: xem thông tin tổng quan
